@@ -4,6 +4,8 @@ import cryptocode
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from pydantic import BaseModel
+import os
+from dotenv import load_dotenv
 
 class User(BaseModel):
     name: str
@@ -11,7 +13,9 @@ class User(BaseModel):
     password: str
 
 def db_connection():
-    uri = 
+    load_dotenv()
+    PASSWORD = os.getenv('DB_PASSWORD')
+    uri = "mongodb+srv://admin:"+PASSWORD+"@atlascluster.jskqzzh.mongodb.net/?retryWrites=true&w=majority&appName=AtlasCluster"
     # Create a new client and connect to the server
     client = MongoClient(uri, server_api=ServerApi('1'), tlsCAFile=certifi.where())
     # Send a ping to confirm a successful connection
