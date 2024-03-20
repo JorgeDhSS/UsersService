@@ -11,7 +11,7 @@ class User(BaseModel):
     password: str
 
 def db_connection():
-    uri = "mongodb+srv://admin:Casino_9009@atlascluster.jskqzzh.mongodb.net/?retryWrites=true&w=majority&appName=AtlasCluster"
+    uri = 
     # Create a new client and connect to the server
     client = MongoClient(uri, server_api=ServerApi('1'), tlsCAFile=certifi.where())
     # Send a ping to confirm a successful connection
