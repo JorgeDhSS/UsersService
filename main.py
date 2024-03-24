@@ -39,12 +39,16 @@ async def create(user: User):
             responseQuery = usersDB.insert_one(user_row).inserted_id
             codeResponse  = 1
         except Exception as e:
-            if e._OperationFailure__code == 11000:
-                codeResponse  = 11000
-                responseQuery = "Este correo ya se encuentra registrado"
+            if hasattr(e, "_OperationFailure__code"):
+                if e._OperationFailure__code == 11000:
+                    codeResponse  = 11000
+                    responseQuery = "Este correo ya se encuentra registrado"
+                else:
+                    codeResponse  = 0
+                    responseQuery = e
             else:
-                codeResponse  = 0
-                responseQuery = e
+                    codeResponse  = 0
+                    responseQuery = e
     else :
         codeResponse  = 0
         responseQuery = "Los campos requeridos están vacíos"
