@@ -29,7 +29,7 @@ def db_connection():
     return users
 app = FastAPI()
 
-#deployment2
+#deployment3
 @app.post("/create")
 async def create(user: User):
     if user.mail != "" and user.name != "" and user.password != "":
