@@ -4,5 +4,4 @@ certifi
 cryptocode
 pymongo
 pydantic
-os
 dotenv
